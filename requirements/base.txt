@@ -1,5 +1,6 @@
-SQLAlchemy-Utils
 SQLAlchemy
+SQLAlchemy-Utils
+flask_restful
+flask_sqlalchemy
 requests
 six
-flask_sqlalchemy
