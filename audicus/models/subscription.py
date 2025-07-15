@@ -1,17 +1,15 @@
-from .db import Base
+from __future__ import absolute_import, print_function, unicode_literals
+
 import sqlalchemy as sa
-from sqlalchemy.orm import (
-    relationship
-)
+from sqlalchemy.orm import relationship
+
+from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
+
+from .db import db
 from .mixins import PrimaryKeyMixin
-from audicus.constants.db import (
-    STATUS_ACTIVE,
-    STATUS_CANCELLED,
-    STATUS_ON_HOLD,
-)
 
 
-class Subscription(PrimaryKeyMixin, Base):
+class Subscription(PrimaryKeyMixin, db.Model):
     __tablename__ = "subscriptions"
 
 

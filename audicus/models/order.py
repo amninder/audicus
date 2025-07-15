@@ -1,13 +1,13 @@
-from .db import Base
+from __future__ import absolute_import, print_function, unicode_literals
+
 import sqlalchemy as sa
-from sqlalchemy.orm import (
-    mapped_column,
-    relationship
-)
+from sqlalchemy.orm import mapped_column, relationship
+
+from .db import db
 from .mixins import PrimaryKeyMixin
 
 
-class Order(PrimaryKeyMixin, Base):
+class Order(PrimaryKeyMixin, db.Model):
     __tablename__ = "orders"
 
 

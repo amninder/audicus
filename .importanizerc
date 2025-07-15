@@ -1,0 +1,31 @@
+{
+    "after_imports_new_lines": 2,
+    "exclude": [
+        "*/__init__.py",
+        "*/docs/*"
+    ],
+    "add_imports": [
+        "from __future__ import absolute_import, print_function, unicode_literals"
+    ],
+    "formatter": "grouped",
+    "groups": [
+        {
+            "type": "stdlib"
+        },
+        {
+            "type": "sitepackages"
+        },
+        {
+            "type": "remainder"
+        },
+        {
+            "type": "packages",
+            "packages": [
+                "tests"
+            ]
+        },
+        {
+            "type": "local"
+        }
+    ]
+}

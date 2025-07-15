@@ -1,9 +1,12 @@
+from __future__ import absolute_import, print_function, unicode_literals
+
 import factory
-from factory.alchemy import SQLAlchemyModelFactory
 import factory.fuzzy
-from audicus.models.order import Order
+from factory.alchemy import SQLAlchemyModelFactory
 from tests import session
 from tests.factories.subscription_factory import SubscriptionFactory
+
+from audicus.models.order import Order
 
 
 class OrderFactory(SQLAlchemyModelFactory):

@@ -1,9 +1,11 @@
 """Console script for audicus."""
 
+from __future__ import absolute_import, print_function, unicode_literals
+
 import typer
+from audicus import utils
 from rich.console import Console
 
-from audicus import utils
 
 app = typer.Typer()
 console = Console()

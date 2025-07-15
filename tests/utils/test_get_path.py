@@ -1,9 +1,12 @@
+from __future__ import absolute_import, print_function, unicode_literals
 import unittest
+
+from tests import BaseTest
 
 from audicus.utils.get_path import _parse_path, getpath
 
 
-class TestGetPath(unittest.TestCase):
+class TestGetPath(BaseTest):
     def setUp(self):
         super(TestGetPath, self).setUp()
 

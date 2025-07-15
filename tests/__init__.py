@@ -1,7 +1,25 @@
+import unittest
+import flask
 from audicus.models.order import Order
 from audicus.models.subscription import Subscription
-from audicus.models.db import (Base, engine, Session)
+from audicus.models.db import (db)
 
 
-Base.metadata.create_all(bind=engine)
-session = Session()
+class BaseTest(unittest.TestCase):
+
+    def setUp(self):
+        self.app = flask.Flask(__name__)
+        self.app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite://"
+        self.app.config["SQLALCHEMY_ECHO"] = False
+        self.app.config["TESTING"] = True
+        self.app_context = self.app.app_context()
+        self.app_context.push()
+
+        self.db = db
+        self.db.init_app(self.app)
+        with self.app.app_context():
+            self.db.create_all()
+
+    def tearDown(self):
+        self.db.drop_all()
+        self.app_context.pop()

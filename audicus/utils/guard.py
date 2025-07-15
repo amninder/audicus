@@ -1,3 +1,6 @@
+from __future__ import absolute_import, print_function, unicode_literals
+
+
 def guard(func, against=None):
     """
     Method to guard against exception or list of exceptions on method proveded.

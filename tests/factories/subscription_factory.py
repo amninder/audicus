@@ -1,20 +1,19 @@
+from __future__ import absolute_import, print_function, unicode_literals
+
 import factory
-from factory.alchemy import SQLAlchemyModelFactory
 import factory.fuzzy
+from factory.alchemy import SQLAlchemyModelFactory
+from audicus.models.db import db
+
+from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
 from audicus.models.subscription import Subscription
-from audicus.constants.db import (
-    STATUS_ACTIVE,
-    STATUS_CANCELLED,
-    STATUS_ON_HOLD,
-)
-from tests import session
 
 
 class SubscriptionFactory(SQLAlchemyModelFactory):
 
     class Meta:
         model = Subscription
-        sqlalchemy_session = session
+        sqlalchemy_session = db.session
         sqlalchemy_session_persistence = "flush"
 
     id = factory.Sequence(lambda n: n + 1)
