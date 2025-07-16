@@ -1,9 +1,10 @@
 -r base.txt
 factory_boy
+importanize
 ipdb
 mock
+pytest
 pytest-cov
 pytest-xdist
-pytest
+python_dotenv
 yapf
-importanize

@@ -3,9 +3,9 @@ from __future__ import absolute_import, print_function, unicode_literals
 import factory
 import factory.fuzzy
 from factory.alchemy import SQLAlchemyModelFactory
-from audicus.models.db import db
 
 from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
+from audicus.models.db import db
 from audicus.models.subscription import Subscription
 
 
