@@ -1,4 +1,4 @@
-FROM python:3.10.18-alpine
+FROM python:3.10.13-alpine
 ENV PYTHONUNBUFFERED 1
 
 
@@ -12,6 +12,8 @@ RUN \
       && pip install -r requirements/dev.txt
 
 RUN mkdir /var/log/app
+
+COPY ./compose/app/app.ini /etc/supervisor.d/app.ini
 
 
 ENV PYTHONPATH /audicus
