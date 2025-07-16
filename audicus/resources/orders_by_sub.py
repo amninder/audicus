@@ -1,14 +1,43 @@
 from __future__ import absolute_import, print_function, unicode_literals
 import posixpath
 
-from flask_restful import Resource
+import requests
+from flask import request
+from flask_restful import Resource, abort
+from marshmallow.exceptions import ValidationError
 
 from audicus.constants import BASE_API_URL
+from audicus.schema.get_subscription import FetchSubscriptionSchema
+from audicus.utils.get_path import getpath
+from audicus.utils.guard import guard
+from audicus.utils.stats import DF
 
 
 class OrdersBySub(Resource):
-?!?jedi=0, ?!?                            (a: BytesPath, *_**paths: BytesPath*_*) ?!?jedi?!?
-    def get(self, sub_id, o?!?jedi=0, rder_id):?!? (a: StrPath, *_**paths: StrPath*_*) ?!?jedi?!?
-        url = posixpath.join(BASE_API_URL, "or")
 
+    def get(self, sub_id, order_id):
         return {"url": 2}
+
+
+class GetSubscriptions(Resource):
+
+    def post(self):
+        """Post data to fetch subscriptions"""
+        data = []
+        schema = FetchSubscriptionSchema()
+        subscription_params = guard(lambda: schema.load(request.json), against=(ValidationError,))
+        if not subscription_params:
+            abort(400, message="Not a valid request body.")
+            return
+        for i in range(subscription_params.from_page, subscription_params.to_page + 1):
+            url = posixpath.join(BASE_API_URL, "subscriptions/", str(i))
+            resp = requests.get(url, params={"per_page": subscription_params.per_page})
+            body = resp.json()
+
+            resp_subscription = guard(lambda: getpath(body, "subscriptions"), against=(TypeError))
+            if resp_subscription == None:
+                abort(400, message="Invalid data received.")
+                return
+            data.extend(getpath(body, "subscriptions"))
+        df = DF(data)
+        return {"status_count": df.status_count}

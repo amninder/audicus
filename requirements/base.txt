@@ -1,6 +1,8 @@
 SQLAlchemy
 SQLAlchemy-Utils
+dataclasses
 flask_restful
 flask_sqlalchemy
+pandas
 requests
 six

@@ -4,6 +4,7 @@ from tests import BaseTest
 from tests.factories.order_factory import OrderFactory
 from tests.factories.subscription_factory import SubscriptionFactory
 
+from audicus.models.db import db
 from audicus.models.order import Order
 from audicus.schema.order_schema import OrderSchema
 
@@ -20,11 +21,11 @@ class OrderSchemaTest(BaseTest):
             "parent_subscription_id__c": subscription.id,
             "total_order_value__c": 2,
         }
-        actual_value = schema.load(data, session=self.db.session)
-        self.db.session.add(actual_value)
-        self.db.session.commit()
+        actual_value = schema.load(data, session=db.session)
+        db.session.add(actual_value)
+        db.session.commit()
 
-        expected_order = self.db.session.query(Order).where(
+        expected_order = db.session.query(Order).where(
             Order.id == 1).one()
         self.assertEqual(expected_order.subscription_id, subscription.id)
 

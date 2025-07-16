@@ -4,6 +4,7 @@ from sqlalchemy.exc import IntegrityError
 from tests import BaseTest
 from tests.factories.subscription_factory import SubscriptionFactory
 
+from audicus.models.db import db
 from audicus.models.subscription import Subscription
 from audicus.schema.subscription_schema import SubscriptionSchema
 
@@ -21,7 +22,7 @@ class SubscriptionSchemaTest(BaseTest):
             start_date=3434,
             status="cancelled",
         )
-        self.db.session.flush()
+        db.session.flush()
         expected_data = {
             "billing_interval__c": "b interval",
             "end_date__c": 3434,
@@ -44,11 +45,11 @@ class SubscriptionSchemaTest(BaseTest):
             "start_date__c": 3434,
             "status__c": "cancelled",
         }
-        actual_value = schema.load(data, session=self.db.session)
-        self.db.session.add(actual_value)
-        self.db.session.flush()
+        actual_value = schema.load(data, session=db.session)
+        db.session.add(actual_value)
+        db.session.flush()
 
-        expected_value = self.db.session.query(Subscription).where(Subscription.id == 2).one()
+        expected_value = db.session.query(Subscription).where(Subscription.id == 2).one()
         self.assertEqual(expected_value.billing_interval, actual_value.billing_interval)
         self.assertEqual(expected_value.billing_interval, "b interval")
         self.assertFalse(expected_value.is_recurring)
@@ -64,7 +65,7 @@ class SubscriptionSchemaTest(BaseTest):
             "start_date__c": 3434,
             "status__c": "cancelled",
         }
-        actual_value = schema.load(data, session=self.db.session)
+        actual_value = schema.load(data, session=db.session)
         data_2 = {
             "billing_interval__c": "some interval",
             "end_date__c": 34,
@@ -74,8 +75,8 @@ class SubscriptionSchemaTest(BaseTest):
             "status__c": "on-hold",
         }
         schema2 = SubscriptionSchema()
-        duplicate_value = schema2.load(data_2, session=self.db.session)
+        duplicate_value = schema2.load(data_2, session=db.session)
 
         with self.assertRaises(IntegrityError):
-            self.db.session.add_all([duplicate_value, actual_value])
-            self.db.session.flush()
+            db.session.add_all([duplicate_value, actual_value])
+            db.session.flush()
