@@ -37,7 +37,7 @@ class TestSubscriptions(BaseTest):
 
         obj = FetchSubscription(from_page=1, to_page=4, per_page=100)
         schema = FetchSubscriptionSchema()
-        response = self.client.post("/subscriptions/", json=schema.dumps(obj))
+        response = self.client.post("/subscriptions/", json=schema.dump(obj))
 
         self.assertDictEqual({"message": "Invalid data received."},
                              response.get_json())
@@ -73,7 +73,7 @@ class TestSubscriptions(BaseTest):
 
         obj = FetchSubscription(from_page=1, to_page=1, per_page=100)
         schema = FetchSubscriptionSchema()
-        response = self.client.post("/subscriptions/", json=schema.dumps(obj))
+        response = self.client.post("/subscriptions/", json=schema.dump(obj))
         expected_response = {
             'status_count': {
                 'active': 2,
