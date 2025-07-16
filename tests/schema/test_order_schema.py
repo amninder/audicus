@@ -4,9 +4,9 @@ from tests import BaseTest
 from tests.factories.order_factory import OrderFactory
 from tests.factories.subscription_factory import SubscriptionFactory
 
+from audicus.models.db import db
 from audicus.models.order import Order
 from audicus.schema.order_schema import OrderSchema
-from audicus.models.db import db
 
 
 class OrderSchemaTest(BaseTest):

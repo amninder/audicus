@@ -4,9 +4,9 @@ from sqlalchemy.exc import IntegrityError
 from tests import BaseTest
 from tests.factories.subscription_factory import SubscriptionFactory
 
+from audicus.models.db import db
 from audicus.models.subscription import Subscription
 from audicus.schema.subscription_schema import SubscriptionSchema
-from audicus.models.db import db
 
 
 class SubscriptionSchemaTest(BaseTest):
