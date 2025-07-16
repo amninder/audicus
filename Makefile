@@ -48,6 +48,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
 
+
 lint/flake8: ## check style with flake8
 	flake8 audicus tests
 
@@ -55,7 +56,13 @@ lint/flake8: ## check style with flake8
 lint: lint/flake8 ## check style
 
 test: ## run tests quickly with the default Python
-	pytest
+	py.test \
+	  --cov-config .coveragerc \
+	  --junitxml=result.xml \
+	  --cov=. \
+	  --cov-report term \
+	  --cov-report xml \
+	  --cov-report term-missing
 
 test-all: ## run tests on every Python version with tox
 	tox

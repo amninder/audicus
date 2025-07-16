@@ -1,13 +1,10 @@
 # from flask_sqlalchemy import SQLAlchemy;
+from __future__ import absolute_import, print_function, unicode_literals
+
 import sqlalchemy as sa
-from sqlalchemy.orm import (
-    sessionmaker,
-    declarative_base
-)
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 
 Base = declarative_base()
-# db = SQLAlchemy(model_class=Base)
-
-engine = sa.create_engine("sqlite://", echo=True)
-Session = sessionmaker(engine)
+db = SQLAlchemy(model_class=Base)

@@ -1,2 +1,10 @@
 -r base.txt
-factory_boy==3.3.3
+factory_boy
+importanize
+ipdb
+mock
+pytest
+pytest-cov
+pytest-xdist
+python_dotenv
+yapf
