@@ -26,7 +26,7 @@ class GetSubscriptions(Resource):
         """Post data to fetch subscriptions"""
         data = []
         schema = FetchSubscriptionSchema()
-        subscription_params = guard(lambda: schema.load(json.loads(request.json)), against=(ValidationError,))
+        subscription_params = guard(lambda: schema.load(request.json), against=(ValidationError,))
         if not subscription_params:
             abort(400, message="Not a valid request body.")
             return
