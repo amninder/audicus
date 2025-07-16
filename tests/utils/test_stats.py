@@ -4,8 +4,8 @@ from tests import BaseTest
 from tests.factories.subscription_factory import SubscriptionFactory
 
 from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
-from audicus.utils.stats import DF
 from audicus.schema.subscription_schema import SubscriptionSchema
+from audicus.utils.stats import DF
 
 
 class TestStats(BaseTest):
