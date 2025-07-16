@@ -1,4 +1,5 @@
 from __future__ import absolute_import, print_function, unicode_literals
+import datetime as dt
 
 import sqlalchemy as sa
 from sqlalchemy.ext.hybrid import hybrid_property
@@ -47,3 +48,13 @@ class Subscription(PrimaryKeyMixin, db.Model):
     @hybrid_property
     def is_recurring(self):
         return self.recurring_amount is not None
+
+    @hybrid_property
+    def end_dt(self):
+        if not self.end_date:
+            return None
+        return dt.datetime.fromtimestamp(self.end_date/1000)
+
+    @hybrid_property
+    def start_dt(self):
+        return dt.datetime.fromtimestamp(self.start_date/1000)
