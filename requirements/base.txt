@@ -3,6 +3,7 @@ SQLAlchemy-Utils
 dataclasses
 flask_restful
 flask_sqlalchemy
+marshmallow
 pandas
 requests
 six
