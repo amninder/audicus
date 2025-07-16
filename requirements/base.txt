@@ -1,5 +1,6 @@
 SQLAlchemy
 SQLAlchemy-Utils
+dataclasses
 flask_restful
 flask_sqlalchemy
 requests
