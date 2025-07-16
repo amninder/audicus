@@ -1,7 +1,8 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
-from audicus.models.subscription import Subscription
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
+
+from audicus.models.subscription import Subscription
 
 
 class SubscriptionSchema(SQLAlchemySchema):

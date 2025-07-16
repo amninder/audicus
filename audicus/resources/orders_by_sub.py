@@ -1,7 +1,8 @@
 from __future__ import absolute_import, print_function, unicode_literals
+import posixpath
 
 from flask_restful import Resource
-import posixpath
+
 from audicus.constants import BASE_API_URL
 
 

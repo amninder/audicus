@@ -1,8 +1,11 @@
-from tests import BaseTest
-from audicus.schema.subscription_schema import SubscriptionSchema
-from audicus.models.subscription import Subscription
-from tests.factories.subscription_factory import SubscriptionFactory
+from __future__ import absolute_import, print_function, unicode_literals
+
 from sqlalchemy.exc import IntegrityError
+from tests import BaseTest
+from tests.factories.subscription_factory import SubscriptionFactory
+
+from audicus.models.subscription import Subscription
+from audicus.schema.subscription_schema import SubscriptionSchema
 
 
 class SubscriptionSchemaTest(BaseTest):
