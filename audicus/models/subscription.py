@@ -1,8 +1,8 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 import sqlalchemy as sa
-from sqlalchemy.orm import relationship
 from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.orm import relationship
 
 from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
 
