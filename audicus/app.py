@@ -1,11 +1,11 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 from dotenv import dotenv_values
-from flask import Flask, request
-from flask_restful import Api, Resource
+from flask import Flask
+from flask_restful import Api
 
 from audicus.models.db import db
-from audicus.resources.orders_by_sub import GetSubscriptions, OrdersBySub
+from audicus.resources.orders_by_sub import GetSubscriptions, OrdersBySub, AllSubscriptions
 
 
 config = dotenv_values(".env")
@@ -27,6 +27,7 @@ def create_app(config=None):
 
     api.add_resource(OrdersBySub, "/sub/<int:sub_id>/order/<int:order_id>")
     api.add_resource(GetSubscriptions, "/subscriptions/")
+    api.add_resource(AllSubscriptions, "/")
     db.init_app(app)
 
     return app

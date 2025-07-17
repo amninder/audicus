@@ -1,0 +1,13 @@
+[flake8]
+exclude =
+  .git,
+  __pycache__,
+  build,
+  dist,
+  docs,
+  migration/versions/*.py,
+  */__init__.py
+filterwarnings =
+  ignore::FutureWarning
+max-line-length = 180
+max-complexity = 10

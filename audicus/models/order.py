@@ -12,7 +12,6 @@ from .mixins import PrimaryKeyMixin
 class Order(PrimaryKeyMixin, db.Model):
     __tablename__ = "orders"
 
-
     closedate = sa.Column(sa.Integer, nullable=False)
     total_order_value = sa.Column("total_order_value__c", sa.Integer, nullable=False)
 

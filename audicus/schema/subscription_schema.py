@@ -12,7 +12,6 @@ class SubscriptionSchema(SQLAlchemySchema):
         model = Subscription
         auto_flush = True
 
-
     id = auto_field()
     end_date = auto_field(data_key="end_date__c")
     start_date = auto_field(data_key="start_date__c")
