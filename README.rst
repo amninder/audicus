@@ -11,6 +11,13 @@ Audicus
          :target: https://codecov.io/github/amninder/audicus
 
 
+Coverage
+--------
+
+.. image:: https://codecov.io/github/amninder/audicus/graphs/sunburst.svg?token=5iv9EmFSPs
+         :alt: Code Coverage
+
+
 Config
 ------
 
