@@ -7,8 +7,8 @@ from sqlalchemy.orm import relationship
 
 from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
 
-from .db import db
-from .mixins import PrimaryKeyMixin
+from audicus.models.db import db
+from audicus.models.mixins import PrimaryKeyMixin
 
 
 class Subscription(PrimaryKeyMixin, db.Model):

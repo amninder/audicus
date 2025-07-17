@@ -8,7 +8,7 @@ from audicus.models.db import db
 from audicus.resources.orders_by_sub import (
     AllSubscriptions,
     GetSubscriptions,
-    OrdersBySub,
+    OrderBySubscription,
 )
 
 
@@ -29,9 +29,9 @@ def create_app(config=None):
     app.config.from_object(config)
     api = Api(app)
 
-    api.add_resource(OrdersBySub, "/sub/<int:sub_id>/order/<int:order_id>")
-    api.add_resource(GetSubscriptions, "/subscriptions/")
     api.add_resource(AllSubscriptions, "/")
+    api.add_resource(GetSubscriptions, "/subscriptions/")
+    api.add_resource(OrderBySubscription, "/subscriptions/<int:sub_id>/orders/")
     db.init_app(app)
 
     return app

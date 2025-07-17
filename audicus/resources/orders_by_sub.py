@@ -11,13 +11,7 @@ from audicus.constants import BASE_API_URL
 from audicus.schema.get_subscription import FetchSubscriptionSchema
 from audicus.utils.get_path import getpath
 from audicus.utils.guard import guard
-from audicus.utils.stats import DF
-
-
-class OrdersBySub(Resource):
-
-    def get(self, sub_id, order_id):
-        return {"url": 2}
+from audicus.utils.stats import DF, OrderDF
 
 
 class GetSubscriptions(Resource):
@@ -63,3 +57,24 @@ class AllSubscriptions(Resource):
 
         df = DF(all_subscriptions)
         return {"status_count": df.status_count}
+
+
+class OrderBySubscription(Resource):
+    BASE_URL = "https://jungle.audicus.com/v1/coding_test/orders/{sub_id}/{page_number}"
+
+    def post(self, sub_id):
+        all_orders = []
+        first_url = self.BASE_URL.format(sub_id=sub_id, page_number=1)
+        response = requests.get(first_url)
+        data = response.json()
+        count = getpath(data, "count")
+        total_count = getpath(data, "total_count")
+        total_pages = math.ceil(total_count/count)
+
+        all_orders.extend(getpath(data, "orders"))
+        for i in range(2, total_pages + 1):
+            url = self.BASE_URL.format(sub_id=sub_id, page_number=i)
+            resp = requests.get(url)
+            all_orders.extend(getpath(resp.json(), "orders"))
+        df = OrderDF(all_orders)
+        return {"average_days": df.avg_close_date()}
