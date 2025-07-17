@@ -23,4 +23,4 @@ jobs:
           # If you use a requirements.txt file:
           pip install -r requirements/dev.txt
       - name: Run pytest
-        run: pytest
+        run: make test
