@@ -11,24 +11,54 @@ Audicus
         :alt: Documentation Status
 
 
+Config
+------
+
+* The configuration can be overridden using **.env** file. The sample is provided in **.env.example** at the root level.
+* following are the sample envs:
+
+.. code-block:: bash
+
+    FLASK_RUN_HOST="0.0.0.0"
+    FLASK_RUN_PORT="6000"
+    PYTHONPATH="."
 
 
-Code challenge
+How to run?
+-----------
+
+* In order to spin up the server, run the following command:
+
+.. code-block:: bash
+
+   docker-compose up
 
 
-* Free software: MIT license
-* Documentation: https://audicus.readthedocs.io.
+Api Details?
+------------
 
+* Following are the two api endpoints:
 
-Features
---------
+#. To get number of statuses: **localhost:6000/**
 
-* TODO
+   * Response data type is:
 
-Credits
--------
+     .. code-block:: json
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+         {
+           "status_count": {
+              "active": 1,
+              "cancelled": 2,
+              "on-hold": 3
+           }
+         }
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+#. To get average length of any given subscription: **localhost:6000/subscription/<sub_id>/orders/**
+
+   * Response data tupe is:
+
+     .. code-block:: json
+
+         {
+           "average_days": 23
+         }
