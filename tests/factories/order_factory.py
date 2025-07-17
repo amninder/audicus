@@ -18,7 +18,7 @@ class OrderFactory(SQLAlchemyModelFactory):
 
     id = factory.Sequence(lambda n: n + 1)
 
-    closedate = factory.fuzzy.FuzzyInteger(1, 1000)
+    closedate = factory.fuzzy.FuzzyInteger(1000000000000, 9000000000000)
     total_order_value = factory.fuzzy.FuzzyInteger(1, 1000)
 
     subscription = factory.SubFactory(SubscriptionFactory)

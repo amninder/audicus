@@ -30,3 +30,19 @@ class DF:
         categories: Series = self.df.groupby(cat).size()
 
         return categories
+
+
+class OrderDF:
+
+    def __init__(self, data):
+        self.data = data
+
+        self._setup()
+
+    def _setup(self):
+        self.df = pd.DataFrame.from_dict(self.data)
+
+    def avg_close_date(self) -> int:
+        timestamp_ms = self.df['closedate']
+        datetime_series = pd.to_datetime(timestamp_ms, unit="ms")
+        return datetime_series.diff().mean().days

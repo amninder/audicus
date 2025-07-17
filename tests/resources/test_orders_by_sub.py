@@ -2,7 +2,6 @@ from __future__ import absolute_import, print_function, unicode_literals
 import json
 
 import mock
-import requests
 from mock import MagicMock
 from tests import BaseTest
 from tests.factories.subscription_factory import SubscriptionFactory

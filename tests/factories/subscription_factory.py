@@ -18,8 +18,8 @@ class SubscriptionFactory(SQLAlchemyModelFactory):
 
     id = factory.Sequence(lambda n: n + 1)
 
-    end_date = factory.fuzzy.FuzzyInteger(1, 1000)
-    start_date = factory.fuzzy.FuzzyInteger(1, 1000)
+    end_date = factory.fuzzy.FuzzyInteger(1000000000000, 9000000000000)
+    start_date = factory.fuzzy.FuzzyInteger(1000000000000, 9000000000000)
 
     billing_interval = factory.fuzzy.FuzzyText(length=12)
     next_payment_date = factory.fuzzy.FuzzyInteger(1, 1000)

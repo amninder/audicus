@@ -1,13 +1,13 @@
 from __future__ import absolute_import, print_function, unicode_literals
+import datetime as dt
 
 import sqlalchemy as sa
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship
 
 from audicus.constants.db import STATUS_ACTIVE, STATUS_CANCELLED, STATUS_ON_HOLD
-
-from .db import db
-from .mixins import PrimaryKeyMixin
+from audicus.models.db import db
+from audicus.models.mixins import PrimaryKeyMixin
 
 
 class Subscription(PrimaryKeyMixin, db.Model):
@@ -47,3 +47,13 @@ class Subscription(PrimaryKeyMixin, db.Model):
     @hybrid_property
     def is_recurring(self):
         return self.recurring_amount is not None
+
+    @hybrid_property
+    def end_dt(self):
+        if not self.end_date:
+            return None
+        return dt.datetime.fromtimestamp(self.end_date/1000)
+
+    @hybrid_property
+    def start_dt(self):
+        return dt.datetime.fromtimestamp(self.start_date/1000)

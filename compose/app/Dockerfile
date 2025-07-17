@@ -9,6 +9,8 @@ ADD . /app
 RUN \
 	  apk update \
 	  && apk add make gcc libffi-dev openssl-dev python3-dev musl-dev supervisor postgresql-dev zsh \
+      && pip install pip -U \
+      && pip install ipython \
       && pip install -r requirements/dev.txt
 
 RUN mkdir /var/log/app
