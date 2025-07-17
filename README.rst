@@ -3,12 +3,12 @@ Audicus
 =======
 
 
-.. image:: https://img.shields.io/pypi/v/audicus.svg
-        :target: https://pypi.python.org/pypi/audicus
-
 .. image:: https://readthedocs.org/projects/audicus/badge/?version=latest
         :target: https://audicus.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
+
+.. image:: https://codecov.io/github/amninder/audicus/graph/badge.svg?token=5iv9EmFSPs
+         :target: https://codecov.io/github/amninder/audicus
 
 
 Config
