@@ -49,11 +49,8 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 
-lint/flake8: ## check style with flake8
+lint: ## check style
 	flake8 audicus tests
-
-
-lint: lint/flake8 ## check style
 
 test: ## run tests quickly with the default Python
 	py.test \
