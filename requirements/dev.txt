@@ -1,5 +1,6 @@
 -r base.txt
 factory_boy
+flake8
 importanize
 ipdb
 mock
@@ -7,5 +8,5 @@ pytest
 pytest-cov
 pytest-xdist
 python_dotenv
+sphinx
 yapf
-flake8
