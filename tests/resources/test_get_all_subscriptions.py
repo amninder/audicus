@@ -12,7 +12,7 @@ from audicus.schema.subscription_schema import SubscriptionSchema
 class TestSubscriptions(BaseTest):
 
     @mock.patch("requests.get")
-    def test_get_all_subscriptions(self):
+    def test_get_all_subscriptions(self, mocked_get):
         """Test case to get the list of all subscriptions"""
         sub1 = SubscriptionFactory(status=STATUS_ACTIVE)
         sub2 = SubscriptionFactory(status=STATUS_ACTIVE)
@@ -35,10 +35,19 @@ class TestSubscriptions(BaseTest):
                 schema.dump(sub4),
                 schema.dump(sub5),
                 schema.dump(sub6),
-            ]
+            ],
+            "page": 1,
+            "count": 6,
+            "total_count": 6,
+            "next_page": 2,
         }
         mocked_get.return_value = mocked_response
-        response = self.client.get(
-            "/"
-        )
-        print(response.json)
+        response = self.client.get("/")
+        expected_response = {
+            'status_count': {
+                'active': 2,
+                'cancelled': 2,
+                'on-hold': 2
+            }
+        }
+        self.assertDictEqual(expected_response, response.json)
