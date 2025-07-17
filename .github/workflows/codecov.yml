@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    name: Run tests and collect coverage
+    name: Run collect coverage
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
