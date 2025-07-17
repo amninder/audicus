@@ -53,10 +53,11 @@ lint: ## check style
 	flake8 audicus tests
 
 test: ## run tests quickly with the default Python
-	py.test \
+	pytest\
 	  --cov-config .coveragerc \
 	  --junitxml=result.xml \
 	  --cov=. \
+	  --cov-branch \
 	  --cov-report term \
 	  --cov-report xml \
 	  --cov-report term-missing
