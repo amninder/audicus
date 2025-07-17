@@ -40,7 +40,7 @@ class OrderSchemaTest(BaseTest):
             start_date=3434,
             status="cancelled",
         )
-        actual_data = OrderFactory(subscription=subscription)
+        actual_data = OrderFactory(id=1, subscription=subscription)
         expected_data = {
             'id': 1,
             'closedate': actual_data.closedate,

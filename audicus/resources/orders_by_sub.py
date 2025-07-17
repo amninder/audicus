@@ -62,7 +62,7 @@ class AllSubscriptions(Resource):
 class OrderBySubscription(Resource):
     BASE_URL = "https://jungle.audicus.com/v1/coding_test/orders/{sub_id}/{page_number}"
 
-    def post(self, sub_id):
+    def get(self, sub_id):
         all_orders = []
         first_url = self.BASE_URL.format(sub_id=sub_id, page_number=1)
         response = requests.get(first_url)
