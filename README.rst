@@ -7,8 +7,8 @@ Audicus
         :target: https://audicus.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
 
-.. image:: https://codecov.io/github/amninder/audicus/graph/badge.svg?token=5iv9EmFSPs
-         :target: https://codecov.io/github/amninder/audicus
+.. image:: https://codecov.io/gh/amninder/audicus/graph/badge.svg?token=5iv9EmFSPs
+ :target: https://codecov.io/gh/amninder/audicus
 
 
 Coverage
